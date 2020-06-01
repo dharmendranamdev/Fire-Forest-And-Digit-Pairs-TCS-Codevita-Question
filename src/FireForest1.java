@@ -21,6 +21,8 @@ public class FireForest1 {
         if((row >= n) || (row < 0 ) || ( col < 0 ) || (col >= n) || (mat[row][col] == 'W')){
             return;
         } 
+        //check whether the cell is already visited or not ,if visited then cell contains greather than 0
+        //it take care about 2 more more direction which has Tree (T) assign same time
         if(temp[row][col] != 0 && count >= temp[row][col])
             return;
         
