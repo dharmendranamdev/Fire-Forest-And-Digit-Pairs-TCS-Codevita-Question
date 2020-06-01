@@ -14,26 +14,25 @@ public class FireForest1 {
         }
         System.out.println();
     }
-    public static void countTime(char mat[][], int temp[][], int n ,int row, int col, int count ,int flag)
+    public static void countTime(char mat[][], int temp[][], int n ,int row, int col, int count)
     {
         //when we don't need to go to this function
-        if(flag != 0){
-            if((row >= n) || (row < 0 ) || ( col < 0 ) || (col >= n) || (mat[row][col] == 'W')){
+        
+        if((row >= n) || (row < 0 ) || ( col < 0 ) || (col >= n) || (mat[row][col] == 'W')){
             return;
-            } 
-        }
+        } 
         if(temp[row][col] != 0 && count >= temp[row][col])
             return;
         
         temp[row][col] = count;
-        countTime(mat, temp, n, row + 1, col, count + 1,1);//north
-        countTime(mat, temp, n, row - 1, col, count + 1,1);//south
-        countTime(mat, temp, n, row, col + 1, count + 1,1);//east
-        countTime(mat, temp, n, row, col - 1, count + 1,1);//west
-        countTime(mat, temp, n, row + 1, col + 1, count + 1,1);//north - east
-        countTime(mat, temp, n, row + 1, col - 1, count + 1,1);//north - west
-        countTime(mat, temp, n, row - 1, col + 1, count + 1,1);//south east
-        countTime(mat, temp, n, row - 1 , col -1, count + 1,1);//south west
+        countTime(mat, temp, n, row + 1, col, count + 1);//north
+        countTime(mat, temp, n, row - 1, col, count + 1);//south
+        countTime(mat, temp, n, row, col + 1, count + 1);//east
+        countTime(mat, temp, n, row, col - 1, count + 1);//west
+        countTime(mat, temp, n, row + 1, col + 1, count + 1);//north - east
+        countTime(mat, temp, n, row + 1, col - 1, count + 1);//north - west
+        countTime(mat, temp, n, row - 1, col + 1, count + 1);//south east
+        countTime(mat, temp, n, row - 1 , col -1, count + 1);//south west
         
         //temp[row][col] = count;
         
@@ -81,9 +80,10 @@ public class FireForest1 {
         //print
         printArray(mat);
         
-        countTime(mat, temp, n, r - 1 , c - 1 ,1,0);
+        countTime(mat, temp, n, r - 1 , c - 1 ,1);
         
         //System.out.println(temp[0].length);
+        /*
         for(int i = 0; i < temp.length; i++)
         {
             for(int j = 0; j < temp[i].length; j++)
@@ -93,7 +93,7 @@ public class FireForest1 {
             System.out.println();
         }
         System.out.println();
-        
+        */
         
         int max = Integer.MIN_VALUE;
         for(int i = 0; i < temp.length; i++)
