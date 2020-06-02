@@ -1,7 +1,24 @@
 import java.util.*;
 import java.lang.*;
 import java.math.*;
-public class DigitPairs {
+public class Main {
+    public static int pairfrom(int n)
+    {
+        if(n == 2)
+            return 1;
+        if(n >= 3)
+            return 2;
+        return 0;
+    }
+    public static int sum(int a[])
+    {
+        int sum = 0;
+        for(int i = 0; i < 10; i++)
+        {
+            sum += a[i];
+        }
+        return sum;
+    }
     public static int largest(int n)
     {
         String str = n + " ";
@@ -49,15 +66,6 @@ public class DigitPairs {
           //System.out.println(i + " - >" + " l-->" + largestDigit + " s-->" + smallestDigit + "  " + score);
           a[i]  = score % 100;
       }
-      //bitscore
-      /*
-      for(int i = 0; i < n; i++)
-      {
-        System.out.print(a[i] + " ");
-      }
-      */
-      //ArrayList <Integer> odd = new ArrayList<Integer>();
-      //ArrayList <Integer> even = new ArrayList<Integer>();
       int oddCount[] = new int[10];
       int evenCount[] = new int[10];
       for(int i = 0; i < n; i++)
@@ -75,49 +83,21 @@ public class DigitPairs {
               evenCount[val]++;
           }
       }
-      /*
-      System.out.println();
-      for(int i = 0; i < 10; i++)
-      {
-        System.out.print(evenCount[i] + " ");
-      }
-      System.out.println();
-      for(int i = 0; i < 10; i++)
-      {
-        System.out.print(oddCount[i] + " ");
-      }
-      */
-      int myodd = 0;
-      for(int i = 0; i < 10; i++)
-      {
-          if(oddCount[i] == 2)
-          {
-            myodd = 1;
-          }
-          if(oddCount[i] > 2)
-          {
-            myodd = 2;
-            break;
-          }
-      }
       
-      int myeven = 0;
-      for(int i = 0; i < 10; i++)
-      {
-          if(evenCount[i] == 2)
-          {
-            myeven = 1;
-          }
-          if(evenCount[i] > 2)
-          {
-            myeven = 2;
-            break;
-          }
-      }
     
-      int p = myodd + myeven;
-      System.out.println(p);
+      int count[] = new int[10];
+      for(int i  = 0; i < 10; i++)
+      {
+          count[i] += pairfrom(evenCount[i]) + pairfrom(oddCount[i]);
+          count[i] = Math.min(2,count[i]);
+      }
+      System.out.println(sum(count));
+          
       }
     }
     
 }
+
+
+
+
